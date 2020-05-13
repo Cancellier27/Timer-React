@@ -1,0 +1,68 @@
+* {
+    font-family: 'Noto Sans', sans-serif;
+}
+
+body {
+    background-color: #f0f0f0;
+    margin: 20px;
+}
+
+.app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.timeInputs {
+    display: block;
+}
+
+.hours,
+.minutes,
+.seconds {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+input {
+    text-align: center;
+}
+
+.clock {
+    margin: 5px;
+    padding: 0 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    height: 80px;
+    font-size: 2em;
+
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    background-color: #ccc;
+}
+
+.action button {
+    width: 90px;
+    margin-right: 5px;
+}
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px 20px;
+    background-color: #cfcfcf;
+}
+
+.footer p {
+    margin: 0;
+    margin-bottom: 5px;
+}
