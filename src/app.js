@@ -14,11 +14,13 @@ class App extends Component {
                 isDisableInputs: false,
                 isDisableStart: true,
 
+                isContinueON: false,
+
                 hourTimer: 0,
                 minuteTimer: 0,
                 secondTimer: 0
             },
-            this.Timer
+            this.Timer = 0
     }
 
     timeFunc(type) {
@@ -34,16 +36,25 @@ class App extends Component {
         this.setState({
             startPressed: true,
             isDisableInputs: true,
-            isDisableStart: false
+            isDisableStart: false,
+            hourTimer: this.state.hourInput,
+            minuteTimer: this.state.minInput,
+            secondTimer: this.state.secInput
         })
 
-        this.makeTimeCount(this.state.startPressed)
+        this.runTimer()
     }
 
     pause() {
         console.log('pause')
         clearInterval(this.Timer)
-        this.setState({ isDisableStart: true })
+        this.setState({ isContinueON: true })
+    }
+
+    continueClock() {
+        console.log('continue')
+        this.runTimer()
+        this.setState({ isContinueON: false })
     }
 
     restart() {
@@ -56,21 +67,54 @@ class App extends Component {
             startPressed: false,
             isDisableInputs: false,
             isDisableStart: true,
+            isContinueON: false,
             hourTimer: 0,
             minuteTimer: 0,
             secondTimer: 0
         })
     }
 
-    makeTimeCount(bool) {
-        if (!bool) {
-            this.setState({
-                hourTimer: this.state.hourInput,
-                minuteTimer: this.state.minInput,
-                secondTimer: this.state.secInput
-            })
+    timeIntervalCalc() {
+        let hours = this.state.hourTimer
+        let minutes = this.state.minuteTimer
+        let seconds = this.state.secondTimer
+
+        // calculando quando houve horas
+        if (hours > 0) {
+            this.setState({ secondTimer: seconds - 1 })
+            if (seconds <= 0 && minutes === 0) {
+                this.setState({
+                    hourTimer: hours - 1,
+                    minuteTimer: 59,
+                    secondTimer: 59
+                })
+            } else if (seconds <= 0 && minutes > 0) {
+                this.setState({
+                    minuteTimer: minutes - 1,
+                    secondTimer: 59
+                })
+            }
+        }
+        // calculando quando houver minutos
+        else if (minutes > 0 && hours === 0) {
+            this.setState({ secondTimer: seconds - 1 })
+            if (seconds <= 0) {
+                this.setState({
+                    minuteTimer: minutes - 1,
+                    secondTimer: 59
+                })
+            }
+        }
+        // calculando apenas quand houver apenas segundos
+        else if (seconds > 0 && minutes === 0) {
+            this.setState({ secondTimer: seconds - 1 })
         }
 
+        return
+    }
+
+    runTimer() {
+        this.Timer = setInterval(() => this.timeIntervalCalc(), 1000)
     }
 
 
@@ -80,7 +124,7 @@ class App extends Component {
                 hourFunc={this.timeFunc('hourInput')}
                 minFunc={this.timeFunc('minInput')}
                 secFunc={this.timeFunc('secInput')}
-                
+
                 hourTimer={this.state.hourTimer}
                 minuteTimer={this.state.minuteTimer}
                 secondTimer={this.state.secondTimer}
@@ -91,10 +135,12 @@ class App extends Component {
 
                 isDisableInputs={this.state.isDisableInputs}
                 isDisableStart={this.state.isDisableStart}
+                isContinueON={this.state.isContinueON}
 
                 start={() => this.start()}
                 pause={() => this.pause()}
                 restart={() => this.restart()}
+                continueClock={() => this.continueClock()}
             />
         )
     }

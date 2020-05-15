@@ -11,8 +11,8 @@ const AppContent = ({
     hourInput, minInput, secInput,
     isDisableInputs, hourFunc, minFunc,
     hourTimer, minuteTimer, secondTimer,
-    secFunc, start, pause,
-    restart, isDisableStart }) => (
+    secFunc, start, pause, restart, 
+    isDisableStart, continueClock, isContinueON}) => (
         <div className="app">
             <Header />
             <TimeInputs
@@ -36,6 +36,8 @@ const AppContent = ({
                 start={start}
                 pause={pause}
                 restart={restart}
+                continueClock={continueClock}
+                isContinueON={isContinueON}
             />
             <Footer />
         </div>

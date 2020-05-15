@@ -1,9 +1,10 @@
 * {
     font-family: 'Noto Sans', sans-serif;
+    color: #000;
 }
 
 body {
-    background-color: #f0f0f0;
+    background-color: #cfe0e8;
     margin: 20px;
 }
 
@@ -43,7 +44,7 @@ input {
 
     border: 1px solid #ccc;
     border-radius: 25px;
-    background-color: #ccc;
+    background-color: #8d9db6;
 }
 
 .action button {
@@ -59,10 +60,20 @@ input {
     width: 100%;
     margin: 10px 0;
     padding: 10px 20px;
-    background-color: #cfcfcf;
+    background-color: #8d9db6;
 }
 
 .footer p {
     margin: 0;
     margin-bottom: 5px;
+}
+
+button {
+    border-radius: 5px;
+    border: 1px solid;
+    text-decoration: none;
+    padding: 5px;
+    margin: 0;
+    background: #001aff;
+    background: linear-gradient(90deg, #87bdd8 0%, #b7d7e8 100%);
 }
