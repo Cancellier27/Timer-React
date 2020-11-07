@@ -1,6 +1,8 @@
-<h3>
+<h1 align="center" >
     <h1 align="center" >Working on it</h1> 
-    <img align="center" alt="Logo" title="#logo" width="350px" src=".github/LOADING.gif">
+</h1>
+<h3 align="center" >
+    <img alt="Logo" title="#logo" width="350px" src=".github/LOADING.gif">
 </h3>
 
 <!-- <p align="center">
